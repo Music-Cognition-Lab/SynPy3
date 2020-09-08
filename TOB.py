@@ -4,7 +4,7 @@ Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
 
-from .basic_functions import ceiling, find_divisor, is_prime, velocity_sequence_to_min_timespan
+from basic_functions import ceiling, find_divisor, is_prime, velocity_sequence_to_min_timespan
 
 def get_syncopation(bar, parameters = None):
 	binarySequence = velocity_sequence_to_min_timespan(bar.get_binary_sequence())

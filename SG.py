@@ -4,8 +4,8 @@ Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
 
-from .basic_functions import get_H, velocity_sequence_to_min_timespan, get_rhythm_category, upsample_velocity_sequence,  find_rhythm_Lmax
-from .parameter_setter import are_parameters_valid
+from basic_functions import get_H, velocity_sequence_to_min_timespan, get_rhythm_category, upsample_velocity_sequence,  find_rhythm_Lmax
+from parameter_setter import are_parameters_valid
 
 def get_syncopation(bar, parameters = None):
 	syncopation = None

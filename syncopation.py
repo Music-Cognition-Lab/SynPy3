@@ -3,8 +3,8 @@ Author: Chunyang Song
 Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
-from .rhythm_parser import *
-from .music_objects import *
+from rhythm_parser import *
+from music_objects import *
 
 
 def sync_perbar_permodel (model, bar, parameters=None):
@@ -29,7 +29,7 @@ def calculate_syncopation(model, source, parameters=None, outfile=None, barRange
 		#treat source as a filename
 		sourceType = source
 		if source[-4:]==".mid":
-			from . import readmidi
+			import readmidi
 			midiFile = readmidi.read_midi_file(source)
 			barlist = readmidi.get_bars_from_midi(midiFile)
 
@@ -78,7 +78,7 @@ def calculate_syncopation(model, source, parameters=None, outfile=None, barRange
 				discardedlist.append(barlist.index(bar))
 				print('Model could not measure bar %d, returning None.' % (barlist.index(bar)+1))
 
-		from . import WNBD
+		import WNBD
 		if model is WNBD:
 			total =  total / numberOfNotes
 		

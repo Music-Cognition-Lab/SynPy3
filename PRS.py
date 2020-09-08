@@ -3,7 +3,7 @@ Author: Chunyang Song
 Institution: Centre for Digital Music, Queen Mary University of London
 '''
 
-from .basic_functions import repeat, subdivide, ceiling, velocity_sequence_to_min_timespan, get_rhythm_category
+from basic_functions import repeat, subdivide, ceiling, velocity_sequence_to_min_timespan, get_rhythm_category
 
 def get_cost(sequence,nextSequence):
 	sequence = velocity_sequence_to_min_timespan(sequence)					# converting to the minimum time-span format

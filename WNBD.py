@@ -3,7 +3,7 @@ Author: Chunyang Song
 Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
-from .basic_functions import repeat, get_note_indices
+from basic_functions import repeat, get_note_indices
 
 # To find the product of multiple numbers
 def cumu_multiply(numbers):

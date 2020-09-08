@@ -3,8 +3,8 @@ Author: Chunyang Song
 Institution: Centre for Digital Music, Queen Mary University of London
 '''
 
-from .basic_functions import concatenate, repeat, subdivide, ceiling, get_rhythm_category
-from .parameter_setter import are_parameters_valid
+from basic_functions import concatenate, repeat, subdivide, ceiling, get_rhythm_category
+from parameter_setter import are_parameters_valid
 
 
 # Each terminal node contains two properties: its node type (note or rest) and its metrical weight.
@@ -17,7 +17,7 @@ class Node:
 def recursive_tree(binarySequence, subdivisionSequence, weightSequence, metricalWeight, level, Lmax):
     # If matching to a Note type, add to terminal nodes
     output = []
-    if binarySequence == concatenate([1],repeat([0],len(binarySequence)-1)):        
+    if binarySequence == concatenate([1],repeat([0],len(binarySequence)-1)):
         output.append(Node('N',metricalWeight))
 
     # If matching to a Rest type, add to terminal nodes
@@ -110,3 +110,49 @@ def get_syncopation(bar, parameters = None):
                         syncopation = -1
 
         return syncopation
+
+def get_syncopation_bitstring(bin_seq, ts, Lmax=4, subdiv_seq=None):
+    ''' Simple bitstring LHL utility, avoiding need for any rhythm files or MIDI
+
+    Keyword arguments:
+        bin_seq -- binary sequence (list), e.g. [1, 0, 1, 0]
+        ts -- time signature (string), e.g. '2/4' or '3/2'
+        Lmax -- recursion depth (int, default 4)
+        subdiv_seq -- explicit sequence of subdivisions (list), e.g. [1, 4, 2]
+
+    Example:
+        > get_syncopation_bitstring([1, 0, 0, 1, 0, 1, 1, 0], '2/4')
+        > 2
+
+    '''
+    if not subdiv_seq:
+        # TODO: Sanity check whether this is a meaningful default
+        from parameter_setter import timeSignatureBase
+        subdiv_seq = timeSignatureBase[ts][0]
+
+    syncopation = None
+    naughtyglobal = 0
+
+    weight_seq = range(0, -Lmax-1, -1)
+
+    # For the rhythm in the current bar, process its tree structure and store the terminal nodes 
+    terminal_nodes = recursive_tree(ceiling(bin_seq), subdiv_seq, weight_seq, weight_seq[0], 0, Lmax)
+                            
+    # Search for the NR pairs that contribute to syncopation, then add the weight-difference to the NRpairSyncopation list
+    NR_pair_sync = []
+    for i in range(len(terminal_nodes)-1, 0, -1):
+        node_i = terminal_nodes[i]
+        if node_i.nodeType == 'R':
+            for j in range(i-1, -1, -1):
+                node_j = terminal_nodes[j]
+                if (node_j.nodeType == 'N') & (node_i.metricalWeight >= node_j.metricalWeight):
+                    NR_pair_sync.append(node_i.metricalWeight - node_j.metricalWeight)
+                    break
+
+    if NR_pair_sync:
+        syncopation = sum(NR_pair_sync)
+    elif terminal_nodes:
+        syncopation = -1
+    else:
+        syncopation = None
+    return syncopation

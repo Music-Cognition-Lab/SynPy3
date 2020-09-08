@@ -5,11 +5,11 @@ Created on Sat Mar 21 22:19:52 2015
 @author: christopherh
 """
 
-from .midiparser import MidiFile, MidiTrack, DeltaTime, MidiEvent
+from midiparser import MidiFile, MidiTrack, DeltaTime, MidiEvent
 #from RhythmParser import Bar
 
-from .music_objects import *
-from .basic_functions import *
+from music_objects import *
+from basic_functions import *
 
 
 

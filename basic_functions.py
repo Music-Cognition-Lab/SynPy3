@@ -96,7 +96,7 @@ def upsample_velocity_sequence(velocitySequence, length):
 
 # convert a velocity sequence to its minimum time-span representation
 def velocity_sequence_to_min_timespan(velocitySequence):
-	from .music_objects import VelocitySequence
+	from music_objects import VelocitySequence
 	minTimeSpanVelocitySeq = [1]
 	for divisors in find_divisor(len(velocitySequence)):
 		segments = subdivide(velocitySequence,divisors)

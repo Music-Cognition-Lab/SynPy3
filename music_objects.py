@@ -1,7 +1,7 @@
 
-from .basic_functions import ceiling, string_to_sequence, calculate_bar_ticks, velocity_sequence_to_min_timespan
-from . import parameter_setter 
-from . import rhythm_parser 
+from basic_functions import ceiling, string_to_sequence, calculate_bar_ticks, velocity_sequence_to_min_timespan
+import parameter_setter 
+import rhythm_parser 
 
 class Note():
 	def __init__(self, firstarg = None, duration = None, velocity = None):

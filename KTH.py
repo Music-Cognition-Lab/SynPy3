@@ -4,7 +4,7 @@ Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
 
-from .basic_functions import get_note_indices, repeat, velocity_sequence_to_min_timespan
+from basic_functions import get_note_indices, repeat, velocity_sequence_to_min_timespan
 
 # To find the nearest power of 2 equal to or less than the given number
 def round_down_power_2(number):

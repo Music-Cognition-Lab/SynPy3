@@ -4,8 +4,8 @@ Institution: Centre for Digital Music, Queen Mary University of London
 
 '''
 
-from .basic_functions import get_H, ceiling, velocity_sequence_to_min_timespan, get_rhythm_category,  find_rhythm_Lmax
-from .parameter_setter import are_parameters_valid
+from basic_functions import get_H, ceiling, velocity_sequence_to_min_timespan, get_rhythm_category,  find_rhythm_Lmax
+from parameter_setter import are_parameters_valid
 
 # The get_metricity function calculates the metricity for a binary sequence with given sequence of metrical weights in a certain metrical level.
 def get_metricity(binarySequence, H):

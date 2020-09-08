@@ -6,8 +6,8 @@ Institution: Centre for Digital Music, Queen Mary University of London
 # Parse the rhythm file and return a list of Bar objects
 #Piece = []
 
-from .parameter_setter import timeSignatureBase
-from .music_objects import *
+from parameter_setter import timeSignatureBase
+from music_objects import *
 
 comment_sign = '#'
 

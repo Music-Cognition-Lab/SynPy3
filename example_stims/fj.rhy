@@ -1,0 +1,5 @@
+t{6/8}
+v{1, 1, 1, 1, 1, 1}  # Bar one and two are metronome
+v{1, 1, 1, 1, 1, 1}
+v{0, 0, 1, 1, 0, 1}  # Bar three and four are rhythm patterns
+v{0, 0, 1, 1, 0, 1}

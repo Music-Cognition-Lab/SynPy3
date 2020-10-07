@@ -36,7 +36,7 @@ def discard_linereturns(line):
 
 
 def read_rhythm(fileName):
-	fileContent = file(fileName)
+	fileContent = open(fileName)
 
 	barList = BarList()
 
